@@ -17,34 +17,20 @@ You should have received a copy of the GNU Lesser General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <InterfaceGps.h>
+#include "InterfaceGps.h"
 
 // -----------
 // Constructor
 // -----------
-#ifndef UART
 InterfaceGps::InterfaceGps(LiquidCrystal_I2C * _lcd,
                      VehicleGps * _gps){
   lcd = _lcd;
   gps = _gps;
   
   //if(!checkGps()){
-    detectGps();
+  detectGps();
   //}
 }
-
-#else
-InterfaceGps::InterfaceGps(LiquidCrystal_UART * _lcd,
-                     VehicleGps * _gps){
-  lcd = _lcd;
-  gps = _gps;
-  
-  checkGps();
-  //if(!checkGps()){
-  //  detectGps();
-  //}
-}
-#endif
 
 // ---------------------------------------
 // Methods for autobauding and serial port

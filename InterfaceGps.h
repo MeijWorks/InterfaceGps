@@ -20,9 +20,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef InterfaceGps_h
 #define InterfaceGps_h
 
-#include <LiquidCrystal_I2C.h>
-#include <LiquidCrystal_UART.h>
-#include <VehicleGps.h>
+#include "LiquidCrystal_I2C.h"
+#include "VehicleGps.h"
 
 // Software version of this library
 #define INTERFACE_GPS_VERSION 0.1
@@ -32,20 +31,12 @@ class InterfaceGps {
 private:  
   // Objects
   VehicleGps * gps;
-#ifndef UART
   LiquidCrystal_I2C * lcd;
-#else
-  LiquidCrystal_UART * lcd;
-#endif
   
   byte testRate(unsigned long baudrate);
 
 public:
-#ifndef UART
   InterfaceGps(LiquidCrystal_I2C * lcd, VehicleGps * gps);
-#else
-  InterfaceGps(LiquidCrystal_UART * lcd, VehicleGps * gps);
-#endif
   
   boolean checkGps();
   boolean detectGps();
